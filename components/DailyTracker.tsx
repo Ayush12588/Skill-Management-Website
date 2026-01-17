@@ -109,7 +109,7 @@ export default function DailyTracker({ journeyId, selectedDate, onUpdate }: Dail
       console.error('Error updating task status:', error);
     }
   };
-
+  
   const getTaskStatus = (taskId: string) => {
     return completions.get(taskId)?.status;
   };
@@ -141,17 +141,26 @@ export default function DailyTracker({ journeyId, selectedDate, onUpdate }: Dail
             }`}
           >
             <div className="flex items-center justify-between gap-4">
-              <span
-                className={`flex-1 ${
-                  isCompleted
-                    ? 'text-[#166534] line-through'
-                    : isFailed
-                    ? 'text-[#991B1B] line-through'
-                    : 'text-[#1E293B]'
-                }`}
-              >
-                {task.task_text}
-              </span>
+              <div className="flex-1">
+                <p
+                  className={`${
+                    isCompleted
+                      ? 'text-[#166534] line-through'
+                      : isFailed
+                      ? 'text-[#991B1B] line-through'
+                      : 'text-[#1E293B]'
+                    }`}
+                  >
+                    {task.task_text}
+                  </p>
+
+                  {!status && (
+                    <p className="text-xs text-[#64748B] mt-1">
+                      Decide honestly. No partial credit.
+                    </p>
+                  )}
+                </div>
+
 
               <div className="flex gap-2">
                 <button
@@ -161,7 +170,7 @@ export default function DailyTracker({ journeyId, selectedDate, onUpdate }: Dail
                       ? 'bg-[#22C55E] text-white scale-110'
                       : 'bg-gray-100 text-[#64748B] hover:bg-green-100 hover:text-[#22C55E]'
                   }`}
-                  title="Mark as completed"
+                  title="I did this today"
                 >
                   <Check className="w-5 h-5" />
                 </button>
@@ -173,7 +182,7 @@ export default function DailyTracker({ journeyId, selectedDate, onUpdate }: Dail
                       ? 'bg-[#EF4444] text-white scale-110'
                       : 'bg-gray-100 text-[#64748B] hover:bg-red-100 hover:text-[#EF4444]'
                   }`}
-                  title="Mark as failed"
+                  title="I didn’t do this"
                 >
                   <X className="w-5 h-5" />
                 </button>
