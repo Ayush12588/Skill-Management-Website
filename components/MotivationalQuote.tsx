@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { Quote } from 'lucide-react';
 
 const quotes = [
+  "You don’t rise to motivation. You fall to discipline.",
+  "Consistency is a skill. Train it.",
+  "Missed days are data, not shame.",
+  "Showing up imperfectly beats disappearing.",
   "Consistency is a skill. Train it.",
   "You don't fail by missing a day. You fail by pretending you didn't.",
   "Discipline is choosing between what you want now and what you want most.",
